@@ -1,22 +1,25 @@
-echo "=== VEDIC 8x8 ==="
+log === VEDIC 8x8 ===
 read_verilog vedic_2x2.v vedic_mult_4x4_fixed.v vedic_mult_8x8_fixed.v
 synth -top vedic_mult_8x8 -flatten
 abc
 stat -tech cmos
-echo "=== STANDARD 8x8 ==="
+
+log === STANDARD 8x8 ===
 design -reset
 read_verilog standard_mult.v
 chparam -set WIDTH 8 standard_mult
 synth -top standard_mult -flatten
 abc
 stat -tech cmos
-echo "=== VEDIC 4x4 ==="
+
+log === VEDIC 4x4 ===
 design -reset
 read_verilog vedic_2x2.v vedic_mult_4x4_fixed.v
 synth -top vedic_mult_4x4 -flatten
 abc
 stat -tech cmos
-echo "=== STANDARD 4x4 ==="
+
+log === STANDARD 4x4 ===
 design -reset
 read_verilog standard_mult.v
 chparam -set WIDTH 4 standard_mult
